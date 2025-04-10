@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  paystubs_service:
+    build: .
+    restart: on-failure:3
+    ports:
+      - "8080:3033"
+    container_name: paystubs-service-container
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: >
+      sh -c "uvicorn paystubs_service:app --host 0.0.0.0 --port 3033"

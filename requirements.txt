@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+httpx
+python-dotenv
+bcrypt
+pandas
+pydantic[email]
+python-multipart 
+pandantic
+fpdf2 
