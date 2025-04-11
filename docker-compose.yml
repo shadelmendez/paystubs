@@ -12,3 +12,15 @@ services:
     working_dir: /app
     command: >
       sh -c "uvicorn paystubs_service:app --host 0.0.0.0 --port 3033"
+
+  test_runner:
+    build: .
+    depends_on:
+      - paystubs_service
+    container_name: pays-stubs-test
+    volumes:
+      - .:/app
+      - ./htmlcov:/app/htmlcov
+    working_dir: /app
+    command: >
+      sh -c "coverage run -m unittest tests.test_paystubs_service && coverage html"
